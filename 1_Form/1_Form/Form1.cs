@@ -183,6 +183,8 @@ namespace _1_Form
         private void button15_Click(object sender, EventArgs e)// Class
         {
             MyClass.MessageBox("First Class constructor Method!");
+            MyClass mc = new MyClass("Rozita");
+            mc.name();// if name() method is public can be read here if private so is produces error in the code
         }
     }
 }
