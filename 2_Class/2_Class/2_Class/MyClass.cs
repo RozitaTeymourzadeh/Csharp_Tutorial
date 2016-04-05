@@ -87,6 +87,22 @@ namespace _2_Class
     {
         void ImyPrint();
     }
+    /************************Define Partial Class***************************************/
+
+    partial class MyClass2 
+    {
+        public string address = "San Jose";
+        public float salary = 2500;
+        partial void Message(string message)// can not define access modifier hence should define another public method
+        {
+            System.Windows.Forms.MessageBox.Show(message);
+        }
+        public void ShowMessage(string message)
+        {
+            Message(message);
+        }
+    }
+
     /************************Define Index***************************************/
     class Index
 	{
@@ -97,4 +113,88 @@ namespace _2_Class
                 set{Name[index] = value;} 
             }
 	}
+    /************************Define Struct***************************************/
+    struct JoblessList: IJoblessList// struct can be in herit to interface only not another Class
+    {
+
+        public JoblessList(string name)// constructor should get atleast one parameter and set all variables
+        {
+            Name = "";
+            Age = 0;
+        }
+        public string Name;
+        public int Age;
+        public void ClearJoblessListInfo() 
+        {
+            Name = "";
+            Age = 0;
+        }
+    }
+    interface IJoblessList
+    {
+        //got inherit to Student Struct
+    }
+    
+    /************************Define Abstract***************************************/
+
+    abstract class HiddenDrive // Abstract hide the object from others file 
+    {
+        public static string Name = "Rozita";
+        public static int Age = 35;
+        public static void Message (string message)
+        {
+            System.Windows.Forms.MessageBox.Show(message);
+        }
+        public abstract void ShowMessage(string message);
+    }
+
+    class SecondDrive: HiddenDrive 
+    {
+        public override void ShowMessage(string message)// to define abstract method, needs to override the method
+        {
+            System.Windows.Forms.MessageBox.Show(message);
+        }
+        
+    }
+    
+    /************************Define Delegate***************************************/
+
+    class MyDelegate 
+    {
+        delegate void DelegateBank(string message);// Delegate is using when simmilar method want to be executed within one delegate
+        public void ShowPrint()
+        {
+            DelegateBank md = new DelegateBank(Print1);
+            md += Print2;
+            md("Delegate is implemented successfully!");
+        }
+        void Print1(string message) 
+        {
+            System.Windows.Forms.MessageBox.Show(message);
+        }
+        void Print2(string message)
+        {
+            System.Windows.Forms.MessageBox.Show(message, "Test");
+        }
+    }
+
+    /************************Define Event***************************************/
+    class MyEvent
+    {
+
+        public event EventHandler onPropertyChanged;
+        string name = ""; 
+        public string Name
+        {
+            get { return name; }
+            set 
+            { 
+                name = value;
+                onPropertyChanged(this, new EventArgs());
+            }
+            
+        }
+    }
+
 }
+
