@@ -54,6 +54,10 @@
             this.button19 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
             this.button21 = new System.Windows.Forms.Button();
+            this.button22 = new System.Windows.Forms.Button();
+            this.button23 = new System.Windows.Forms.Button();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.button24 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -306,11 +310,52 @@
             this.button21.UseVisualStyleBackColor = true;
             this.button21.Click += new System.EventHandler(this.button21_Click);
             // 
+            // button22
+            // 
+            this.button22.Location = new System.Drawing.Point(356, 12);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(112, 48);
+            this.button22.TabIndex = 26;
+            this.button22.Text = "Save File";
+            this.button22.UseVisualStyleBackColor = true;
+            this.button22.Click += new System.EventHandler(this.button22_Click);
+            // 
+            // button23
+            // 
+            this.button23.Location = new System.Drawing.Point(356, 66);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(71, 48);
+            this.button23.TabIndex = 27;
+            this.button23.Text = "Convert Data";
+            this.button23.UseVisualStyleBackColor = true;
+            this.button23.Click += new System.EventHandler(this.button23_Click);
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(433, 92);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(55, 22);
+            this.textBox5.TabIndex = 28;
+            // 
+            // button24
+            // 
+            this.button24.Location = new System.Drawing.Point(356, 124);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(132, 33);
+            this.button24.TabIndex = 29;
+            this.button24.Text = "Casting";
+            this.button24.UseVisualStyleBackColor = true;
+            this.button24.Click += new System.EventHandler(this.button24_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(509, 475);
+            this.ClientSize = new System.Drawing.Size(822, 475);
+            this.Controls.Add(this.button24);
+            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.button23);
+            this.Controls.Add(this.button22);
             this.Controls.Add(this.button20);
             this.Controls.Add(this.button21);
             this.Controls.Add(this.textBox4);
@@ -338,7 +383,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = " ";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -372,6 +417,10 @@
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.Button button21;
+        private System.Windows.Forms.Button button22;
+        private System.Windows.Forms.Button button23;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Button button24;
     }
 }
 

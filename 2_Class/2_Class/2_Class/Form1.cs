@@ -258,7 +258,7 @@ namespace _2_Class
             br.Dispose();
         }
         string path3;
-        private void button21_Click(object sender, EventArgs e)
+        private void button21_Click(object sender, EventArgs e)// Binary Write
         {
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -277,6 +277,42 @@ namespace _2_Class
             bw.Write(buffer);
             //bw.Write("C");
             bw.Dispose();
+        }
+
+        private void button22_Click(object sender, EventArgs e)//Save File
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Text File|*.txt";// To filter .txt file
+            sfd.Title = "Write in File";// To give title to window
+            if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            { 
+            string path4 = sfd.FileName;
+            BinaryWriter bw = new BinaryWriter(File.Create(path4));
+            bw.Write("Example Text File.");
+            bw.Dispose();
+            }
+        }
+
+        private void button23_Click(object sender, EventArgs e)//Convert Data
+        {
+            int myInt = Convert.ToInt32(textBox5.Text) + 2;
+            //char c = Convert.ToChar(textBox5.Text);//for converting to Char
+            MessageBox.Show(myInt.ToString());
+
+        }
+
+        private void button24_Click(object sender, EventArgs e)// Casting
+        {
+            object myObject = "Casting is performed";
+            if (myObject is string) MessageBox.Show((string)myObject);
+
+            Control myControl = button4;
+            if (myControl is Button) 
+            {
+                Button myBotton = (Button)myControl;
+                MessageBox.Show(myBotton.Text);
+            }
+
         }
     }
 }
