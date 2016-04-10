@@ -301,16 +301,109 @@ namespace _2_Class
 
         }
 
-        private void button24_Click(object sender, EventArgs e)// Casting
+        private void button24_Click(object sender, EventArgs e)// Casting and Substring and Trim and Replace and Remove
         {
             object myObject = "Casting is performed";
             if (myObject is string) MessageBox.Show((string)myObject);
 
-            Control myControl = button4;
+            Control myControl = button24;
             if (myControl is Button) 
             {
-                Button myBotton = (Button)myControl;
+                //Button myBotton = (Button)myControl;// casting way 1
+                Button myBotton = myControl as Button;// casting way 2
                 MessageBox.Show(myBotton.Text);
+            }
+            
+            /* SubString and Trim*/
+            string Name = "Rozita Teymourzadeh";
+            /*#1 Way*/
+            // string LastName = Name.Substring(7,12);// 7 is starting index and 12 is length that want to be printed
+            /*#1 Way*/
+            string FirstName = Name.Substring(0, Name.IndexOf(' '));
+            string LastName = Name.Substring(Name.IndexOf(' ') + 1);//+1 is due to excluding space index
+            MessageBox.Show("Substring First Name is: " + FirstName + " and Substring Last Name is: " + LastName);
+
+            string JobTitle = "         Senior Electronic Design Engineer         ";
+            string RawJobTitle = JobTitle.Trim();// Trim to remove the spaces for the string variable
+            MessageBox.Show("No Trim: " + JobTitle);
+            MessageBox.Show("Trim: " + RawJobTitle);
+            MessageBox.Show("TrimStart: " + JobTitle.TrimStart());
+            MessageBox.Show("TrimEnd: " + JobTitle.TrimEnd());
+
+            /* Remove and Reomove*/
+
+            string message = "This is test for Remove and replace syntax";
+            MessageBox.Show(message);
+            MessageBox.Show(message.Remove(23,19));
+            MessageBox.Show(message.Replace("Remove and "," "));
+
+
+        }
+
+        private void button25_Click(object sender, EventArgs e)// Split in Array
+        {
+            string nameList = "Anita; Rozita; Panteha";//Split in Array
+            String[] ArrayNameList = nameList.Split(';');
+            foreach (string name in ArrayNameList)
+            {
+                MessageBox.Show("Member of ArrayNameList is: " + name);
+            }
+
+            string _Letters = "abcdefghi"; //.ToCharArray
+            char[] Lettres = _Letters.ToCharArray();
+            foreach (char c in Lettres)
+            {
+                MessageBox.Show(c.ToString());
+            }
+                
+        }
+
+        private void button26_Click(object sender, EventArgs e)// Math Class
+        {
+            label1.Text = Math.Abs(-56).ToString();
+            label1.Text = Math.PI.ToString();
+            label1.Text= Math.Round(7.432, 2).ToString();
+
+        }
+
+        private void button27_Click(object sender, EventArgs e)// Random No
+        {
+           /* Generate Random No. */
+            Random r = new Random();
+            MessageBox.Show("Generate No btw 0 to 100 :" + r.Next(0, 100).ToString());//No. btw 0 to 100
+            
+            /* Generate Random No. and save in byte Array */
+
+            byte[] buffer = new byte[5];
+            Random r1 = new Random();
+            r1.NextBytes(buffer);
+            MessageBox.Show("Generate byte Random No.: " + BitConverter.ToString(buffer));
+
+            /* Generate Random No. in double means 0 and 1 */
+
+            Random r2 = new Random();
+            MessageBox.Show("Generate Double Random No.: " + r2.NextDouble().ToString());
+
+            /* Generate Random Character */
+            char[] letters = "fdyrewqTGRFUYYILKBTDASAcdrhghb12345678900009876543".ToCharArray();
+            Random r3 = new Random();
+            string randomString = "";
+            for (int i = 0; i < 10; i++)
+            {
+                randomString += letters[r3.Next(0, 50)].ToString();
+            }
+            MessageBox.Show("Generate Random Character: " + randomString);
+
+        }
+
+        private void button28_Click(object sender, EventArgs e)//Folder Browser Dialog
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.RootFolder = Environment.SpecialFolder.MyDocuments;
+            fbd.Description = "Rozita set a test description for browser";
+            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                MessageBox.Show(fbd.SelectedPath);
             }
 
         }
