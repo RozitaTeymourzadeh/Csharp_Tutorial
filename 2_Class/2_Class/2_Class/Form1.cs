@@ -407,5 +407,56 @@ namespace _2_Class
             }
 
         }
+
+        private void button29_Click(object sender, EventArgs e)//Directory Class
+        {
+
+            string[] Drives = Directory.GetLogicalDrives();// To show the Available Hard Disk Drive
+            foreach (string s in Drives)
+            {
+                MessageBox.Show(s);
+            }
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string[] files = Directory.GetFiles(fbd.SelectedPath);// To show the Path to file
+                foreach (string s in files)
+                {
+                    MessageBox.Show(s);
+                }
+                string[] folders = Directory.GetDirectories(fbd.SelectedPath);// To show the Path to folders
+                foreach (string s in folders)
+                {
+                    MessageBox.Show(s);
+                }
+
+                FolderBrowserDialog fbd1 = new FolderBrowserDialog();// To show the time of created directory and parent folder
+                if(fbd1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    MessageBox.Show(Directory.GetCreationTime(fbd1.SelectedPath).ToString(),"Create Time");
+                    MessageBox.Show(Directory.GetLastAccessTime(fbd1.SelectedPath).ToString(), "Last Access Time");
+                    MessageBox.Show(Directory.GetLastWriteTime(fbd1.SelectedPath).ToString(), "Last Write Time");
+                    MessageBox.Show(Directory.GetParent(fbd1.SelectedPath).ToString(),"Parent Folder");
+                    
+                }
+                FolderBrowserDialog fbd2 = new FolderBrowserDialog();
+                if(fbd2.ShowDialog() == System.Windows.Forms.DialogResult.OK)// Generate New Folder and move it 
+                {
+                    Directory.CreateDirectory(fbd2.SelectedPath + "\\Rozita_File");
+                    Directory.Move(fbd2.SelectedPath, "C:\\Users\\Rozita.Teymourzadeh\\Desktop\\C_Tutorial\\Rozita_File");//Here there is bug as it can not find
+                    Directory.Delete(fbd2.SelectedPath);
+                }
+                
+            }
+        }
+
+        private void button30_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if(ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+               MessageBox.Show(File.Exists(ofd.FileName).ToString());
+            }
+        }
     }
 }
